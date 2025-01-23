@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head") %>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenBlog</title>
+
+</head>
+<body>
+    <%- include("./partials/nav") %>
+    
+    <div class="container-fluid mt-4">
+        <div class="card container w-50">
+            <img src=<%= specificBlog.coverImageUrl %> class="card-img-top mt-3 custom-border" style="height: 20rem;border: 2px solid lavender" alt="...">
+            <div class="card-body">
+                <h2 class="card-title"><%= specificBlog.title %></h2>
+                <p class="card-text"><%= specificBlog.body %></p>
+
+                <div class="container d-flex align-items-center mt-3">
+                    <img src="/images/default.jpeg" style="width:40px; border-radius: 20px;" alt="Default image">
+                    <%= specificBlog.authorName %>
+                </div>
+            </div>
+
+            <% if(locals.user){ %>
+                
+                <% if((locals.user._id).equals(locals.specificBlog.createdBy)){ %>
+                    <div class="container mt-3">
+
+                        <a href="/blog/editBlog/<%= locals.specificBlog._id %>" class="btn btn-primary">Edit</a>
+                        <a href="/blog/deleteBlog/<%= locals.specificBlog._id %>" class="btn btn-danger">Delete</a>
+
+                    </div>
+                <% } %>
+
+            <% } %>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <h2 class="">Comments</h2>
+    </div>
+
+
+    
+
+</body>
+</html>
+
+
+
+

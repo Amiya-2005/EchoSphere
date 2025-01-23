@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head") %>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenBlog</title>
+
+</head>
+<body>
+  <%- include("./partials/nav") %>
+  <% const blog = specificBlog %>
+    
+    <div class="card container-fluid mt-4" style="width: 80vw;border : 2px solid gray">
+
+        <div class="row g-0">
+          <div class="col-md-6 d-flex flex-column">
+
+            <div class="card-body">
+              <h2 class="card-title"><%= blog.title %></h2>
+              <p class="card-text"><%= blog.body %></p>
+
+            </div>
+
+
+            <div class="d-flex flex-row" >
+                  <div class="container footer mt-auto mb-4" >
+                    <img src="/images/default.jpeg" style="width:40px; border-radius: 20px;" alt="Default image">
+                    <span><%= blog.authorName %></span>
+                  </div>
+
+                  <% if(locals.user){ %>
+                      
+                    <% if((user._id).equals(blog.createdBy)){ %>
+                        <div class="container my-4">
+
+                            <a href="/blog/editBlog/<%= blog._id %>" class="btn btn-primary">Edit</a>
+                            <a href="/blog/deleteBlog/<%= blog._id %>" class="btn btn-danger ms-2">Delete</a>
+
+                        </div>
+                    <% } %>
+
+                <% } %>
+            </div>
+            
+
+
+            <!-- this is footer -->
+
+            <!-- footer ends -->
+
+          </div>
+          <div class="col-md-6">
+            <img src=<%= blog.coverImageUrl %> class="card-img-top my-3 custom-border" style="height: 30rem;border: 2px solid lavender" alt="...">
+          </div>
+        </div>
+    </div>
+
+    <div class="card container-fluid mt-4" style="width: 80vw;border : 2px solid lavender">
+      <h4 class="">Comments (<%= blog.comments.length %>)</h4>
+
+    </div>
+
+    
+  <%- include("./partials/script") %>
+
+</body>
+</html>
+
+
+
+
+

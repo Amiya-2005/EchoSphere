@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in</title>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+
+    <div class="container mt-3">
+      <form action="/blog/editBlog/<%= locals.specificBlog._id %>" method="post" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              value=<%= locals.specificBlog.title %>
+              id="title"
+              name="title"
+            />
+        </div>
+        <div class="mb-3">
+          <label for="title" class="form-label">Body</label>
+          <textarea
+            class="form-control"
+            id="floatingTextArea"
+            name="body"
+          ><%= locals.specificBlog.body %></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+
+    <%- include("./partials/script") %>
+  </body>
+</html>
