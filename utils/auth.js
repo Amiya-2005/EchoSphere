@@ -1,5 +1,6 @@
 const JWT = require("jsonwebtoken");
-const secret = "@miy@281"
+const secret = ""
+//change it to actual secret
 
 const createToken = (user) => {
     const payload = {
